@@ -8,7 +8,7 @@ import { getFriendsApi, getUserInfoApi, updateUserApi } from "./apis/user-servic
 import { initWsConnectionApi } from "./apis/websocket-service-apis.js";
 import { randomBool, randomNumber } from "./utils.js";
 
-const duration = '20s'
+const duration = '1m'
 const timeUnit = '1s'
 export const options = {
   scenarios: {
@@ -179,72 +179,25 @@ export const options = {
       exec: 'initWsConnectionBehavior',
     },
 
-    // Notification Behavior
-    // anomalyAddToCalendarBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'anomalyAddToCalendarBehavior',
-    // },
-    // anomalyGetFriendMessagesBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'anomalyGetFriendMessagesBehavior',
-    // },
-    // anomalyGetEmailBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'anomalyGetEmailBehavior',
-    // },
-    // anomalyGetJoinedTeamsBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'anomalyGetJoinedTeamsBehavior',
-    // },
-
-    // // Error Bahaviors
-    // anomalyGetVersionBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'anomalyGetVersionBehavior',
-    // },
-    // notFoundBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'notFoundBehavior',
-    // },
-    // unauthorizedBehavior: {
-    //   executor: 'constant-arrival-rate',
-    //   rate: 2,
-    //   timeUnit: timeUnit,
-    //   duration: duration,
-    //   preAllocatedVUs: 2,
-    //   maxVUs: 4,
-    //   exec: 'unauthorizedBehavior',
-    // },
+    // Error Bahaviors
+    notFoundBehavior: {
+      executor: 'constant-arrival-rate',
+      rate: 2,
+      timeUnit: timeUnit,
+      duration: duration,
+      preAllocatedVUs: 2,
+      maxVUs: 4,
+      exec: 'notFoundBehavior',
+    },
+    unauthorizedBehavior: {
+      executor: 'constant-arrival-rate',
+      rate: 4,
+      timeUnit: timeUnit,
+      duration: duration,
+      preAllocatedVUs: 4,
+      maxVUs: 8,
+      exec: 'unauthorizedBehavior',
+    },
   },
 };
 
@@ -296,44 +249,6 @@ export function setup() {
   const result = {user, teams, friends, messages, meetings}
   return result
 }
-
-// export function setup() {
-//   const user = {}
-
-//   const teamsRes = getJoinedTeamsApi(0, 100)
-//   const teams = JSON.parse(teamsRes.body).data
-
-//   const friends = ["d448a4f8-d071-7059-2f2b-fd071185c1da","d448a4f8-d071-7059-2f2b-fd071185c1dc","d448a4f8-d071-7059-2f2b-fd071185c1df"]
-
-//   const messages = []
-//   for(var team of teams){
-//     const chatChannels = team.channels.filter(channel => channel.type === CHAT_CHANNEL)
-//     for(var chatChannel of chatChannels){
-//         const res = getTextChannelMessagesApi(0, chatChannel.id)
-//         if (res.status !== 200) {
-//           throw new Error(`Error in getTextChannelMessagesApi. Status: ${res.status}, Body: ${res.body}`);
-//         }
-//         const addedMessages = JSON.parse(res.body)
-//         messages.push(...addedMessages)
-//     }
-//   }
-
-//   const meetings = []
-//   for(var team of teams){
-//     const voiceChannels = team.channels.filter(channel => channel.type === VOICE_CHANNEL)
-//     for(var voiceChannel of voiceChannels){
-//         const res = getMeetingsOfVideoChannelApi(0, voiceChannel.id)
-//         if(res.status != 200){
-//           throw new Error(`Error in getMeetingsOfVideoChannelApi. Status: ${res.status}, Body: ${res.body}`);
-//         }
-//         const addedMeetings = JSON.parse(res.body)
-//         meetings.push(...addedMeetings)
-//     }
-//   }
-
-//   const result = {user, teams, friends, messages, meetings}
-//   return result
-// }
 
 // General Behaviours
 export function browseBehavior(){
@@ -445,6 +360,7 @@ export function createMeetingBehavior(data){
 
 export function updateMeetingBehavior(data){
     const meeting = data.meetings[randomNumber(0, data.meetings.length)]
+    console.log("meeting id", meeting.id)
     updateMeetingApi(meeting.id) 
 }
 
