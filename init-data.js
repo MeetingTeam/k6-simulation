@@ -1,5 +1,5 @@
 import { sendTextMessageApi } from "./apis/chat-service-apis.js";
-import { CHAT_CHANNEL, VOICE_CHANNEL } from "./apis/constants.js";
+import { CHAT_CHANNEL, VOICE_CHANNEL } from "./config.js";
 import { createMeetingApi } from "./apis/meeting-service-apis.js";
 import { createChannelApi, createTeamApi,  getJoinedTeamsApi } from "./apis/team-service.apis.js"
 

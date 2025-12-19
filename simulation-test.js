@@ -1,5 +1,5 @@
 import { getFriendMessagesApi, getTextChannelMessagesApi, reactMessageApi, sendTextMessageApi, unsendMessageApi } from "./apis/chat-service-apis.js";
-import { CHAT_CHANNEL, VOICE_CHANNEL } from "./apis/constants.js";
+import { CHAT_CHANNEL, VOICE_CHANNEL } from "./config.js";
 import { anomalyGetVersionApi, notFoundApi, unauthorizedApi } from "./apis/error-apis.js";
 import { cancelMeetingApi, createMeetingApi, getMeetingsOfVideoChannelApi, reactMeetingApi, updateMeetingApi } from "./apis/meeting-service-apis.js";
 import { anomalyAddToCalendarApi, anomalyGetEmailApi, anomalyGetFriendMessagesApi, anomalyGetJoinedTeamsApi } from "./apis/notification-service-apis.js";

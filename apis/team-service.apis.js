@@ -1,5 +1,5 @@
 import { randomBool, randomString } from "../utils.js";
-import { CHAT_CHANNEL, headerConfig, TEAM_SERVICE_API, VOICE_CHANNEL } from "./constants.js";
+import { CHAT_CHANNEL, headerConfig, TEAM_SERVICE_API, VOICE_CHANNEL } from "../config.js";
 import http from 'k6/http';
 
 export function createTeamApi() {

@@ -1,5 +1,5 @@
 import { randomBool, randomString } from "../utils.js";
-import { headerConfig, MEETING_SERVICE_API } from "./constants.js";
+import { headerConfig, MEETING_SERVICE_API } from "../config.js";
 import http from 'k6/http';
 
 export function createMeetingApi(teamId, channelId) {

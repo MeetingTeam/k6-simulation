@@ -1,4 +1,4 @@
-import { CHAT_SERVICE_API, MEETING_SERVICE_API, TEAM_SERVICE_API, USER_SERVICE_API } from "./constants.js";
+import { CHAT_SERVICE_API, MEETING_SERVICE_API, TEAM_SERVICE_API, USER_SERVICE_API } from "../config.js";
 import http from 'k6/http';
 
 export function anomalyGetVersionApi() {

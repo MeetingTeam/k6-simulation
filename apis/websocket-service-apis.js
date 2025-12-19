@@ -1,5 +1,5 @@
 import ws from "k6/ws";
-import { accessToken, WEBSOCKET_SERVICE_API } from "./constants.js";
+import { accessToken, WEBSOCKET_SERVICE_API } from "../config.js";
 import { sleep } from "k6";
 
 export function initWsConnectionApi(duration){

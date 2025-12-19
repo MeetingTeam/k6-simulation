@@ -1,4 +1,4 @@
-import { headerConfig, USER_SERVICE_API } from "./constants.js";
+import { headerConfig, USER_SERVICE_API } from "../config.js";
 import http from 'k6/http';
 
 const enableDownServices = true

@@ -1,5 +1,5 @@
 import { randomString } from "../utils.js";
-import { CHAT_SERVICE_API, headerConfig } from "./constants.js";
+import { CHAT_SERVICE_API, headerConfig } from "../config.js";
 import http from 'k6/http';
 
 export function sendTextMessageApi(teamId, channelId, recipientId) {
