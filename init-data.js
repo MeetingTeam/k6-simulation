@@ -7,7 +7,7 @@ import { getFriendsApi } from "./apis/user-service-apis.js";
 export function setup(){
     const createTeamNum = 10
     const createChannelNum = 4
-    const createMessageNum = 4
+    const createMessageNum = 20
     const createMeetingNum = 4
     
     for(var i=0; i<createTeamNum; i++){
