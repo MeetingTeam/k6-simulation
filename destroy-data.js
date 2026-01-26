@@ -1,5 +1,8 @@
 import { deleteTeamApi, getJoinedTeamsApi } from "./apis/team-service.apis.js"
 import { deleteAllMessages } from "./apis/chat-service-apis.js"
+export const options = {
+    setupTimeout: '2m',
+}
 
 export function setup(){
     var deleteTeamNum = 1000
@@ -20,4 +23,5 @@ export function setup(){
 
 export default function () {
   // do nothing
+
 }

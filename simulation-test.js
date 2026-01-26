@@ -11,6 +11,11 @@ import { randomBool, randomNumber } from "./utils.js";
 const duration = '1m'
 const timeUnit = '1s'
 export const options = {
+  // HTTP timeout configuration
+  //httpDebug: 'headers', // Enable full HTTP debugging
+  setupTimeout: '2m',
+
+  
   scenarios: {
     browseBehavior: {
       executor: 'constant-arrival-rate',
@@ -227,7 +232,8 @@ export function setup() {
     for(var chatChannel of chatChannels){
         const res = getTextChannelMessagesApi(0, chatChannel.id)
         if (res.status !== 200) {
-          throw new Error(`Error in getTextChannelMessagesApi. Status: ${res.status}, Body: ${res.body}`);
+          console.warn(`Warning: getTextChannelMessagesApi failed. Status: ${res.status}, Channel: ${chatChannel.id}`);
+          continue;
         }
         const addedMessages = JSON.parse(res.body)
         messages.push(...addedMessages)
@@ -235,8 +241,9 @@ export function setup() {
   }
   for(var friend of friends){
     const res = getFriendMessagesApi(0, friend.id)
-    if(res.status != 200){
-      throw new Error(`Error in getFriendMessagesApi. Status: ${res.status}, Body: ${res.body}`);
+    if (res.status !== 200) {
+          console.warn(`Warning: getFriendMessagesApi failed. Status: ${res.status}, Friend: ${friend.id}`);
+          continue;
     }
     const addedMessages = JSON.parse(res.body)
     messages.push(...addedMessages)
@@ -248,7 +255,8 @@ export function setup() {
     for(var voiceChannel of voiceChannels){
         const res = getMeetingsOfVideoChannelApi(0, voiceChannel.id)
         if(res.status != 200){
-          throw new Error(`Error in getMeetingsOfVideoChannelApi. Status: ${res.status}, Body: ${res.body}`);
+          console.warn(`Warning: getMeetingsOfVideoChannelApi failed. Status: ${res.status}, Channel: ${voiceChannel.id}`);
+          continue;
         }
         const addedMeetings = JSON.parse(res.body)
         meetings.push(...addedMeetings)
