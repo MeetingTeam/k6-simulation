@@ -51,7 +51,8 @@ export function getTextChannelMessagesApi(receivedMessageNum, channelId) {
 export function deleteAllMessages() {
   return http.del(
     `${CHAT_SERVICE_API}/message/private/all`,
+    null,
     { headers: headerConfig }
-  )
+  );
 }
 

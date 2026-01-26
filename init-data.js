@@ -2,6 +2,7 @@ import { sendTextMessageApi } from "./apis/chat-service-apis.js";
 import { CHAT_CHANNEL, VOICE_CHANNEL } from "./config.js";
 import { createMeetingApi } from "./apis/meeting-service-apis.js";
 import { createChannelApi, createTeamApi,  getJoinedTeamsApi } from "./apis/team-service.apis.js"
+import { getFriendsApi } from "./apis/user-service-apis.js";
 
 export function setup(){
     const createTeamNum = 10
@@ -38,6 +39,14 @@ export function setup(){
                     createMeetingApi(team.id, channel.id)
                 }
             }
+        }
+    }
+
+    const friendsRes = getFriendsApi(0, 100)
+    const friends = JSON.parse(friendsRes.body).data
+    for(var friend of friends){
+        for(var j=0; j<createMessageNum; j++){
+            sendTextMessageApi(null, null, friend.id)
         }
     }
 }

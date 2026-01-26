@@ -3,7 +3,7 @@ import { CHAT_CHANNEL, VOICE_CHANNEL } from "./config.js";
 import { anomalyGetVersionApi, notFoundApi, unauthorizedApi } from "./apis/error-apis.js";
 import { cancelMeetingApi, createMeetingApi, getMeetingsOfVideoChannelApi, reactMeetingApi, updateMeetingApi } from "./apis/meeting-service-apis.js";
 import { anomalyAddToCalendarApi, anomalyGetEmailApi, anomalyGetFriendMessagesApi, anomalyGetJoinedTeamsApi } from "./apis/notification-service-apis.js";
-import { addFriendsToTeamApi, createChannelApi, createTeamApi, getJoinedTeamsApi, getMembersOfTeamApi, updateChannelApi, updateTeamApi } from "./apis/team-service.apis.js";
+import { addFriendsToTeamApi, createChannelApi, createTeamApi, getJoinedTeamsApi, getMembersOfTeamApi, kickMemberApi, updateChannelApi, updateTeamApi } from "./apis/team-service.apis.js";
 import { getFriendsApi, getUserInfoApi, updateUserApi } from "./apis/user-service-apis.js";
 import { initWsConnectionApi } from "./apis/websocket-service-apis.js";
 import { randomBool, randomNumber } from "./utils.js";
@@ -75,6 +75,15 @@ export const options = {
       preAllocatedVUs: 2,
       maxVUs: 4,
       exec: 'addFriendsToTeamBehavior',
+    },
+    getMembersOfTeamApiBehavior: {
+      executor: 'constant-arrival-rate',
+      rate: 2,
+      timeUnit: timeUnit,
+      duration: duration,
+      preAllocatedVUs: 2,
+      maxVUs: 4,
+      exec: 'getMembersOfTeamApiBehavior',
     },
 
     chatBehavior: {
@@ -283,24 +292,15 @@ export function updateChannelBehavior(data){
     updateChannelApi(channel.id)
 }
 
+export function getMembersOfTeamApiBehavior(data){
+    const team = data.teams[randomNumber(0, data.teams.length)]
+    getMembersOfTeamApi(team.id)
+}
+
 export function addFriendsToTeamBehavior(data){
     const team = data.teams[randomNumber(0, data.teams.length)]
-
-    const membersRes = getMembersOfTeamApi(team.id)
-    if(membersRes.status != 200){
-      throw new Error(`Error in getMembersOfTeamApi. Status: ${res.status}, Body: ${res.body}`);
-    }
-    const members = JSON.parse(membersRes.body)
-    
-    // Filter friends who are NOT already members
-    const memberUserIds = members.map(member => member.user.id)
-    const addedFriendIds = data.friends
-        .filter(friend => !memberUserIds.includes(friend.id))
-        .map(friend => friend.id);
-
-    if(addedFriendIds.length > 0){
-        addFriendsToTeamApi(team.id, addedFriendIds)
-    }
+    const friend = data.friends[randomNumber(0, data.friends.length)]
+    addFriendsToTeamApi(team.id, [friend.id])
 }
 
 // Chat Behaviours

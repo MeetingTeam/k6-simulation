@@ -60,11 +60,8 @@ export function leaveTeamApi(teamId) {
 
 export function kickMemberApi(teamId, memberId) {
   return http.del(
-    `${TEAM_SERVICE_API}/team-member/kick-member`,
-    JSON.stringify({
-      teamId: teamId,
-      memberId: memberId,
-    }),
+    `${TEAM_SERVICE_API}/team-member/kick-member?teamId=${teamId}&memberId=${memberId}`,
+    null,
     { headers: headerConfig }
   );
 }

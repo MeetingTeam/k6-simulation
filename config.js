@@ -1,11 +1,12 @@
-export const USER_SERVICE_API = "http://localhost:8080/user-service"
-export const TEAM_SERVICE_API = "http://localhost:8081/team-service"
-export const MEETING_SERVICE_API = "http://localhost:8083/meeting-service"
-export const CHAT_SERVICE_API = "http://localhost:8082/chat-service"
-export const NOTIFICATION_SERVICE_API = "http://localhost:8086/chat-service"
-export const WEBSOCKET_SERVICE_API = "ws://localhost:8084/websocket-service"
+const API_HOST_PORT="192.168.153.129:30080"
+export const USER_SERVICE_API = `http://${API_HOST_PORT}/user-service`
+export const TEAM_SERVICE_API = `http://${API_HOST_PORT}/team-service`
+export const MEETING_SERVICE_API = `http://${API_HOST_PORT}/meeting-service`
+export const CHAT_SERVICE_API = `http://${API_HOST_PORT}/chat-service`
+export const NOTIFICATION_SERVICE_API = `http://${API_HOST_PORT}/chat-service`
+export const WEBSOCKET_SERVICE_API = `ws://${API_HOST_PORT}/websocket-service`
 
-export const accessToken = ""
+export const accessToken = "eyJraWQiOiIwSXY2eWJoNk9TbW16WkprajZcL1UzUlFLM3ZFUXc1ZkRJRGhjZFpta0ViUT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI5NGY4ZjQ5OC0zMDcxLTcwMGItMDM2Yi04YjY0ZmM1MmE3MTYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfeTMwZWlKeWpmIiwiY29nbml0bzp1c2VybmFtZSI6Ijk0ZjhmNDk4LTMwNzEtNzAwYi0wMzZiLThiNjRmYzUyYTcxNiIsIm9yaWdpbl9qdGkiOiJlMjU5NTYxYy0zYzM5LTQwMTAtOWZlOC01ZGE2MTgzNWVlZjkiLCJhdWQiOiI0dTIyYTM4NDRoM205M3EwcTZiODdtNGlkbCIsImV2ZW50X2lkIjoiZmMwOTVmOWQtY2UyYS00MTc5LWExZGEtYmI3MjRlMmQ4NzkwIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3NjkzODkyNzIsImV4cCI6MTc2OTQ3NTY3MiwiaWF0IjoxNzY5Mzg5MjcyLCJqdGkiOiJiNzMyMzA3NC1mMjYzLTQ0YjItYThjMC1kMmQwOGI2YTU4NjciLCJlbWFpbCI6InRpZW5odW5nMTcwOTIwMDRAZ21haWwuY29tIn0.Tvx3M_ij_QZxiJpqtwTNM7GZ36wxSzkMTjw_fJHcM9jGMUkRPfFKH2-fuDJRRs-Q8Sn_AV92_wwKOHGE6cpcy3eBgV1jrKv8P77qacmVPch2wH_Rrc6U5oTJP9J88MXv2iQ7xISEC02zvtc_ecu33ut0kMomD24OwmzJjlDF2o9v3NT5M6NfVKI19v_yfeSppWiHvkWjnOzwbkT2i6ONNsLxH6maW4s_ZtHHBAcY4bebRJ4H2Q-Vjg8eP_lqEsqVFdF3LoFyewGtK9TmRFFNB-vbpFCJaV0yr4TOp57UoscbJjaRZCROAQclXQKkwcT8xORNu_TgNJZ4Ok9Uml5ODw"
 export const headerConfig = {
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${accessToken}`
