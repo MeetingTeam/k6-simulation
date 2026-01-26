@@ -1,4 +1,4 @@
-import { deleteTeamApi, getJoinedTeamsApi } from "./apis/team-service.apis.js"
+import { deleteTeamApi, getJoinedTeamsApi } from "./apis/team-service-apis.js"
 import { deleteAllMessages } from "./apis/chat-service-apis.js"
 export const options = {
     setupTimeout: '2m',

@@ -3,7 +3,7 @@ import { CHAT_CHANNEL, VOICE_CHANNEL } from "./config.js";
 import { anomalyGetVersionApi, notFoundApi, unauthorizedApi } from "./apis/error-apis.js";
 import { cancelMeetingApi, createMeetingApi, getMeetingsOfVideoChannelApi, reactMeetingApi, updateMeetingApi } from "./apis/meeting-service-apis.js";
 import { anomalyAddToCalendarApi, anomalyGetEmailApi, anomalyGetFriendMessagesApi, anomalyGetJoinedTeamsApi } from "./apis/notification-service-apis.js";
-import { addFriendsToTeamApi, createChannelApi, createTeamApi, getJoinedTeamsApi, getMembersOfTeamApi, kickMemberApi, updateChannelApi, updateTeamApi } from "./apis/team-service.apis.js";
+import { addFriendsToTeamApi, createChannelApi, createTeamApi, getJoinedTeamsApi, getMembersOfTeamApi, kickMemberApi, updateChannelApi, updateTeamApi } from "./apis/team-service-apis.js";
 import { getFriendsApi, getUserInfoApi, updateUserApi } from "./apis/user-service-apis.js";
 import { initWsConnectionApi } from "./apis/websocket-service-apis.js";
 import { randomBool, randomNumber } from "./utils.js";
