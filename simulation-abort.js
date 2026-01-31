@@ -7,10 +7,13 @@ import { addFriendsToTeamApi, createChannelApi, createTeamApi, getJoinedTeamsApi
 import { getFriendsApi, getUserInfoApi, updateUserApi } from "./apis/user-service-apis.js";
 import { initWsConnectionApi } from "./apis/websocket-service-apis.js";
 import { randomBool, randomNumber } from "./utils.js";
-import { visitWebUIApi } from "./apis/frontend-service-apis.js";
 
-const duration = '4m'
+const duration = '1m'
 const timeUnit = '1s'
+
+const setupDataPath="./setup-data.json"
+const setupData = JSON.parse(open(setupDataPath))
+
 export const options = {
   // HTTP timeout configuration
   //httpDebug: 'headers', // Enable full HTTP debugging
@@ -20,15 +23,6 @@ export const options = {
   scenarios: {
     // User Service APIs and Browse Behaviors
     browseBehavior: {
-      executor: 'constant-arrival-rate',
-      rate: 2,
-      timeUnit: timeUnit,
-      duration: duration,
-      preAllocatedVUs: 2,
-      maxVUs: 4,
-      exec: 'browseBehavior',
-    },
-    visitWebUIBehavior: {
       executor: 'constant-arrival-rate',
       rate: 2,
       timeUnit: timeUnit,
@@ -229,56 +223,8 @@ export const options = {
   },
 };
 
-
 export function setup() {
-  const userRes = getUserInfoApi();
-  const user = JSON.parse(userRes.body)
-
-  const teamsRes = getJoinedTeamsApi(0, 100)
-  const teams = JSON.parse(teamsRes.body).data
-  
-  const friendsRes = getFriendsApi(0, 100)
-  const friends = JSON.parse(friendsRes.body).data
-
-  const messages = []
-  for(var team of teams){
-    const chatChannels = team.channels.filter(channel => channel.type === CHAT_CHANNEL)
-    for(var chatChannel of chatChannels){
-        const res = getTextChannelMessagesApi(0, chatChannel.id)
-        if (res.status !== 200) {
-          console.warn(`Warning: getTextChannelMessagesApi failed. Status: ${res.status}, Channel: ${chatChannel.id}`);
-          continue;
-        }
-        const addedMessages = JSON.parse(res.body)
-        messages.push(...addedMessages)
-    }
-  }
-  for(var friend of friends){
-    const res = getFriendMessagesApi(0, friend.id)
-    if (res.status !== 200) {
-          console.warn(`Warning: getFriendMessagesApi failed. Status: ${res.status}, Friend: ${friend.id}`);
-          continue;
-    }
-    const addedMessages = JSON.parse(res.body)
-    messages.push(...addedMessages)
-  }
-
-  const meetings = []
-  for(var team of teams){
-    const voiceChannels = team.channels.filter(channel => channel.type === VOICE_CHANNEL)
-    for(var voiceChannel of voiceChannels){
-        const res = getMeetingsOfVideoChannelApi(0, voiceChannel.id)
-        if(res.status != 200){
-          console.warn(`Warning: getMeetingsOfVideoChannelApi failed. Status: ${res.status}, Channel: ${voiceChannel.id}`);
-          continue;
-        }
-        const addedMeetings = JSON.parse(res.body)
-        meetings.push(...addedMeetings)
-    }
-  }
-
-  const result = {user, teams, friends, messages, meetings}
-  return result
+  return setupData
 }
 
 // General Behaviours
@@ -286,10 +232,6 @@ export function browseBehavior(){
     getUserInfoApi()
     getFriendsApi(0, 10)
     getJoinedTeamsApi(0, 10)
-}
-
-export function visitWebUIBehavior(){
-  visitWebUIApi()
 }
 
 // User Management Behavior
