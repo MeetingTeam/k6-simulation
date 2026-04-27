@@ -1,4 +1,4 @@
-const API_HOST_PORT="192.168.153.129:30080"
+const API_HOST_PORT="localhost:30080"
 export const USER_SERVICE_API = `http://${API_HOST_PORT}/user-service`
 export const TEAM_SERVICE_API = `http://${API_HOST_PORT}/team-service`
 export const MEETING_SERVICE_API = `http://${API_HOST_PORT}/meeting-service`
@@ -7,7 +7,7 @@ export const NOTIFICATION_SERVICE_API = `http://${API_HOST_PORT}/chat-service`
 export const WEBSOCKET_SERVICE_API = `ws://${API_HOST_PORT}/websocket-service`
 export const FRONTEND_SERVICE_API = `http://${API_HOST_PORT}`
 
-export const accessToken = "eyJraWQiOiIwSXY2eWJoNk9TbW16WkprajZcL1UzUlFLM3ZFUXc1ZkRJRGhjZFpta0ViUT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI5NGY4ZjQ5OC0zMDcxLTcwMGItMDM2Yi04YjY0ZmM1MmE3MTYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfeTMwZWlKeWpmIiwiY29nbml0bzp1c2VybmFtZSI6Ijk0ZjhmNDk4LTMwNzEtNzAwYi0wMzZiLThiNjRmYzUyYTcxNiIsIm9yaWdpbl9qdGkiOiI5NDIzZTBlMC00Y2IwLTRkMjAtYTE1MS1mNmE0ZTEzNGNlMmUiLCJhdWQiOiI0dTIyYTM4NDRoM205M3EwcTZiODdtNGlkbCIsImV2ZW50X2lkIjoiNDFkMjQ1MGItMzU3OC00MTQxLTk1OWQtZGZjMDlmNjUxMjkwIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3NzM0ODEyMTUsImV4cCI6MTc3MzU2NzYxNSwiaWF0IjoxNzczNDgxMjE1LCJqdGkiOiJiMmMzYzcwNi1jZWNjLTQ0MWQtYWNhNS1kMmExNjA3MWU2OTEiLCJlbWFpbCI6InRpZW5odW5nMTcwOTIwMDRAZ21haWwuY29tIn0.dC3cA2PqPxxI0X6jC3gKKhaC3SGTJvsG-6DvHo-JoXofYrKBdFtnrwVhsoxqa7vDGbPmBqWJIqAki9R2LK4oR3o2Lm5DJlU57vV3sg66kLR5V6pNik8NecOtsTwiGU25tZoiDPxezwtDNRroF_aHNhAYleLpiXSXLFBdAyAyExWz1bpu5acruL-5QJcGJqvLvuGnRv5Wm_BA09Gcw9IOfLcQz-fz5vzO58FFl45_-paVKSygdz2rT9zHMuW5NDkBBYSjeX1GOVmUk08ILD3G9Zh72W4zynLwi4s91-HwhDLk2xdR66dIYvhsYffqRd2ZHkjfq38c_TuuadshkeubqA"
+export const accessToken = ""
 export const headerConfig = {
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${accessToken}`

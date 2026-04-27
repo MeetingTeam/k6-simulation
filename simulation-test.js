@@ -11,6 +11,7 @@ import { visitWebUIApi } from "./apis/frontend-service-apis.js";
 
 const duration = '4m'
 const timeUnit = '1s'
+const rate = 2 
 export const options = {
   // HTTP timeout configuration
   //httpDebug: 'headers', // Enable full HTTP debugging
@@ -21,7 +22,7 @@ export const options = {
     // User Service APIs and Browse Behaviors
     browseBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -30,7 +31,7 @@ export const options = {
     },
     // visitWebUIBehavior: {
     //   executor: 'constant-arrival-rate',
-    //   rate: 2,
+    //   rate: rate,
     //   timeUnit: timeUnit,
     //   duration: duration,
     //   preAllocatedVUs: 2,
@@ -39,7 +40,7 @@ export const options = {
     // },
     updateUserBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -50,7 +51,7 @@ export const options = {
     // Team Service APIs
     createTeamBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -59,7 +60,7 @@ export const options = {
     },
     updateTeamBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -68,7 +69,7 @@ export const options = {
     },
     createChannelBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -77,7 +78,7 @@ export const options = {
     },
     updateChannelBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -86,7 +87,7 @@ export const options = {
     },
     addFriendsToTeamBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -95,7 +96,7 @@ export const options = {
     },
     getMembersOfTeamApiBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -106,7 +107,7 @@ export const options = {
     // Chat Service APIs
     chatBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -115,7 +116,7 @@ export const options = {
     },
     reactMessageBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -124,7 +125,7 @@ export const options = {
     },
     unsendMessageBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -133,7 +134,7 @@ export const options = {
     },
     getTextChannelMessagesBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -142,7 +143,7 @@ export const options = {
     },
     getFriendMessagesBehavior:{
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -153,7 +154,7 @@ export const options = {
     // Meeting Service APIs
     createMeetingBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -162,7 +163,7 @@ export const options = {
     },
     updateMeetingBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -171,7 +172,7 @@ export const options = {
     },
     reactMeetingBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -180,7 +181,7 @@ export const options = {
     },
     cancelMeetingBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -189,7 +190,7 @@ export const options = {
     },
     getMeetingsOfVideoChannelBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -199,7 +200,7 @@ export const options = {
 
     initWsConnectionBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -210,7 +211,7 @@ export const options = {
     // Error Bahaviors
     notFoundBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 2,
+      rate: rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 2,
@@ -219,7 +220,7 @@ export const options = {
     },
     unauthorizedBehavior: {
       executor: 'constant-arrival-rate',
-      rate: 4,
+      rate: 2*rate,
       timeUnit: timeUnit,
       duration: duration,
       preAllocatedVUs: 4,
